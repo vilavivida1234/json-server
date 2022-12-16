@@ -58,9 +58,6 @@ const View = (() => {
 
     for (let li of listItems) {
       li.addEventListener("click", function () {
-        if (totalCredits > 18) {
-          alert("You can only choose up to 18 credits in one semester");
-        }
         if (this.classList.contains("active")) {
           this.classList.remove("active");
           totalCredits -= Number(li.getAttribute("data-value"));
@@ -72,6 +69,9 @@ const View = (() => {
           totalCredits += Number(li.getAttribute("data-value"));
           display.innerHTML = totalCredits;
           courseSelected.push(li);
+        }
+        if (totalCredits > 18) {
+          alert("You can only choose up to 18 credits in one semester");
         }
       });
     }
