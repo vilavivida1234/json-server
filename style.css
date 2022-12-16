@@ -1,0 +1,76 @@
+* {
+  font-family: Serif;
+  text-align: center;
+}
+
+.content{
+      text-align:center;
+      margin: auto;
+
+}
+
+.flex-box-content {
+      position: relative;
+      top: 50px;
+      display: flex;
+      align-items: stretch;
+      justify-content: space-evenly;
+      width: 90%;
+      padding-top: 20px;
+      padding-left: 5%;
+      padding-right: 5%;
+      padding-bottom: 20px;
+}
+
+
+.courses_container {
+      width: 200px;
+      height: 300px;
+      border: 2px solid #aaa;
+      padding: 20px;
+}
+
+.selected_container {
+      width: 200px;
+      height: 300px;
+      border: 2px solid #aaa;
+      padding: 20px;
+}
+
+[role="listbox"] {
+  margin: 1em 0 0;
+  padding: 0;
+  /* min-height: 18em; */
+  border: 2px solid #aaa;
+  background: white;
+}
+
+[role="listbox"]#courses_list {
+  position: relative;
+  height: 250px;
+  overflow-y: auto;
+}
+
+[role="listbox"]#selected_list {
+  position: relative;
+  height: 250px;
+  overflow-y: auto;
+}
+
+[role="option"] {
+  text-align: center;
+  position: relative;
+  display: block;
+  padding: 0 1em 0 1.5em;
+  border: 0.5px solid #aaa;
+  line-height: 1.8em;
+} 
+
+.active{
+  background-color: deepskyblue;
+}
+
+
+.credit_counter{
+  margin-top: 80px;
+}
