@@ -26,34 +26,44 @@
 .courses_container {
       width: 200px;
       height: 300px;
-      border: 2px solid #aaa;
-      padding: 20px;
+      border: 2px solid black;
+      padding: 10px;
 }
 
 .selected_container {
       width: 200px;
       height: 300px;
-      border: 2px solid #aaa;
-      padding: 20px;
+      border: 2px solid black;
+      padding: 10px;
 }
 
 [role="listbox"] {
   margin: 1em 0 0;
   padding: 0;
-  /* min-height: 18em; */
-  border: 2px solid #aaa;
+  border: 2px solid black;
   background: white;
 }
 
 [role="listbox"]#courses_list {
   position: relative;
-  height: 250px;
+  height: 274px;
+  width: 200px;
   overflow-y: auto;
+}
+
+.active{
+  background-color: deepskyblue !important;;
+}
+
+li:nth-child(even) {
+  background: rgb(221, 239, 221);
+  
 }
 
 [role="listbox"]#selected_list {
   position: relative;
-  height: 250px;
+  height: 274px;
+  width: 200px;
   overflow-y: auto;
 }
 
@@ -62,13 +72,9 @@
   position: relative;
   display: block;
   padding: 0 1em 0 1.5em;
-  border: 0.5px solid #aaa;
+  border: 0.5px solid black;
   line-height: 1.8em;
 } 
-
-.active{
-  background-color: deepskyblue;
-}
 
 
 .credit_counter{

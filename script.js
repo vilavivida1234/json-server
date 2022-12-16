@@ -17,7 +17,7 @@ Api.getCourses();
 const View = (() => {
   const domstr = {
     courseList: "#courses_list",
-    selectedList: ".selected_list",
+    selectedList: "#selected_list",
   };
 
   // Create innerHTML
@@ -44,13 +44,19 @@ const View = (() => {
 
   // Handle user select
   const activateSelection = () => {
-    var ul = document.getElementById("courses_list");
-    var listItems = ul.getElementsByTagName("li");
-    var display = document.getElementById("display");
-    let totalCredits = 0;
+    const ul = document.getElementById("courses_list");
+    const listItems = ul.getElementsByTagName("li");
+    const display = document.getElementById("display");
+
+    var totalCredits = 0;
+    var courseSelected = [];
+
+    const selectedContainer = document.getElementById("selected_list");
+    console.log(selectedContainer);
+
+    var button = document.getElementById("select_button");
 
     for (let li of listItems) {
-      console.log(li);
       li.addEventListener("click", function () {
         if (totalCredits > 18) {
           alert("You can only choose up to 18 credits in one semester");
@@ -59,13 +65,35 @@ const View = (() => {
           this.classList.remove("active");
           totalCredits -= Number(li.getAttribute("data-value"));
           display.innerHTML = totalCredits;
+          // TODO: Delete courses from courseSelected when it is unselected
+          courseSelected.filter((item) => item !== li);
         } else {
           this.classList.add("active");
           totalCredits += Number(li.getAttribute("data-value"));
           display.innerHTML = totalCredits;
+          courseSelected.push(li);
         }
       });
     }
+
+    button.addEventListener("click", function () {
+      let temp = window.confirm(
+        "You have chosen " +
+          totalCredits +
+          " credits for this semester. You cannot change once you submit. Do you want to confirm?"
+      );
+
+      if (temp) {
+        for (let course of courseSelected) {
+          course.style.display = "none";
+
+          course.style.display = "";
+          course.classList.remove("active");
+          selectedContainer.appendChild(course);
+        }
+        button.disabled = true;
+      }
+    });
   };
 
   const render = (ele, tmp) => {
@@ -122,13 +150,8 @@ const controller = ((model, view) => {
     });
   };
 
-  const select = () => {
-    state.selectCourses();
-  };
-
   const bootstrap = () => {
     init();
-    select();
   };
 
   return { bootstrap };
