@@ -57,13 +57,12 @@ const View = (() => {
     var button = document.getElementById("select_button");
 
     for (let li of listItems) {
-      li.addEventListener("click", function () {
+      li.addEventListener("click", function (event) {
         if (this.classList.contains("active")) {
           this.classList.remove("active");
           totalCredits -= Number(li.getAttribute("data-value"));
           display.innerHTML = totalCredits;
-          // TODO: Delete courses from courseSelected when it is unselected
-          courseSelected.filter((item) => item !== li);
+          courseSelected = courseSelected.filter((item) => item.id != li.id);
         } else {
           this.classList.add("active");
           totalCredits += Number(li.getAttribute("data-value"));
